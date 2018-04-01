@@ -15,4 +15,21 @@ export default {
   pos: {
     marginBottom: 12,
   },
+  iconUndo: {
+    marginLeft: 10
+  },
+  buttonUndo: {
+    position: 'absolute',
+    top: '85%'
+  },
+  overflowTaskHistory: {
+    overflowY: 'scroll',
+    height: 100,
+    marginTop: '2%'
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  }
 };

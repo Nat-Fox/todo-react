@@ -4,7 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import stylesDeleted from './styles'
+import stylesDeleted from './styles';
+import Icon from 'material-ui/Icon';
 
 
 function SimpleCard(props) {
@@ -19,18 +20,26 @@ function SimpleCard(props) {
             {title}
           </Typography>
           <Typography variant="headline" component="h2">
-            be{bull}nev{bull}o{bull}lent
+            Deleted Tasks
+          </Typography>      
+
+          <Typography component="p">    
+
+            <div className={classes.overflowTaskDeleted}>
+              {/* Aca irá la lista de tareas borradas */}
+              <div>
+                <span className={classes.bullet}>•</span> 
+                <span>lala</span>
+              </div>              
+            </div>     
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography component="p">
-            well meaning and kindly.<br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
+
+        </CardContent>        
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button variant="raised" size="large" color="primary" className={classes.buttonRemove}>
+            Remove 
+            <Icon className={classes.iconDeleted}>remove_circle_outline</Icon>
+          </Button>
         </CardActions>
       </Card>
     </div>
