@@ -1,4 +1,5 @@
-import red from 'material-ui/colors/red'
+import red from 'material-ui/colors/red';
+import green from 'material-ui/colors/green';
 
 export default {
   card: {
@@ -22,7 +23,7 @@ export default {
   },
   buttonAdd: {
     position: 'absolute',
-    top: '46%'
+    top: '48%'
   },
   mrgTopForm: {
     marginTop: 15,
@@ -41,6 +42,12 @@ export default {
     cursor: 'pointer',
     '&:hover': {
       color: red[600]
+    }
+  },
+  iconCheck: {
+    cursor: 'pointer',
+    '&:hover': {
+      color: green[500]
     }
   }
 };

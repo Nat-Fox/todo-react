@@ -31,12 +31,15 @@ function SimpleCard(props) {
               {/* Aca irá la lista de tareas ingresadas */}
               <div>
                 <Grid container spacing={16}>
-                  <Grid item xs={10} md={10}>
+                  <Grid item xs={8} md={8}>
                     <span className={classes.bullet}>•</span> 
                     <span>lala</span>
                   </Grid>
                   <Grid item xs={2} md={2}>
-                    <Icon className={classes.iconDeleted}>delete_forever</Icon>
+                    <Icon className={classes.iconDeleted}>delete</Icon>
+                  </Grid>                
+                  <Grid item xs={2} md={2}>
+                    <Icon className={classes.iconCheck}>check_circle</Icon>
                   </Grid>                
                 </Grid>
               </div>              

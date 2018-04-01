@@ -1,3 +1,5 @@
+import red from 'material-ui/colors/red';
+import blue from 'material-ui/colors/blue';
 
 export default {
   card: {
@@ -21,16 +23,28 @@ export default {
   },
   buttonRemove: {
     position: 'absolute',
-    top: '46%'
+    top: '48%'
   },
   overflowTaskDeleted: {
     overflowY: 'scroll',
     height: 100,
-    marginTop: '10%'
+    marginTop: '15%'
   },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
     transform: 'scale(0.8)',
+  },
+  iconDeletedForever: {
+    cursor: 'pointer',
+    '&:hover': {
+      color: red[600]
+    }
+  },
+  iconUndo: {
+    cursor: 'pointer',
+    '&:hover': {
+      color: blue[600]
+    }
   }
 };

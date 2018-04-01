@@ -1,7 +1,9 @@
+import blue from 'material-ui/colors/blue';
+
 export default {
   card: {
     minWidth: 275,
-    height: 300
+    height: 350
   },
   bullet: {
     display: 'inline-block',
@@ -20,16 +22,17 @@ export default {
   },
   buttonUndo: {
     position: 'absolute',
-    top: '85%'
+    top: '48%'
   },
   overflowTaskHistory: {
     overflowY: 'scroll',
-    height: 100,
-    marginTop: '2%'
+    height: 120,
+    marginTop: '15%'
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  iconUndoTask: {
+    cursor: 'pointer',
+    '&:hover': {
+      color: blue[600]
+    }
   }
 };

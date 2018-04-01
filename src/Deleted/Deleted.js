@@ -6,6 +6,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import stylesDeleted from './styles';
 import Icon from 'material-ui/Icon';
+import Grid from 'material-ui/Grid'
 
 
 function SimpleCard(props) {
@@ -24,20 +25,29 @@ function SimpleCard(props) {
           </Typography>      
 
           <Typography component="p">    
-
             <div className={classes.overflowTaskDeleted}>
               {/* Aca irá la lista de tareas borradas */}
               <div>
-                <span className={classes.bullet}>•</span> 
-                <span>lala</span>
+                <Grid container spacing={16}>
+                  <Grid item xs={8} md={8}>
+                    <span className={classes.bullet}>•</span> 
+                    <span>lala</span>
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                    <Icon className={classes.iconDeletedForever}>delete_forever</Icon>
+                  </Grid>                
+                  <Grid item xs={2} md={2}>
+                    <Icon className={classes.iconUndo}>undo</Icon>
+                  </Grid>                
+                </Grid>
               </div>              
-            </div>     
+            </div>  
           </Typography>
 
         </CardContent>        
         <CardActions>
           <Button variant="raised" size="large" color="primary" className={classes.buttonRemove}>
-            Remove 
+            Remove All
             <Icon className={classes.iconDeleted}>remove_circle_outline</Icon>
           </Button>
         </CardActions>

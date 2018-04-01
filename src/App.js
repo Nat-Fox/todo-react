@@ -6,26 +6,25 @@ import Add from './Add/Add';
 import Deleted from './Deleted/Deleted';
 import History from './History/History'
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 
 
 class App extends Component {
   render() {
     return (
       <div>
-        <div className="title-app">Task</div>
-        <Grid container spacing={16}>
-          <Grid item xs={12} md={6}>
-            <Add title="Add Task" />   
+        <Typography className="title-app" variant="display3">Task</Typography>        
+        <Grid container spacing={8}>
+          <Grid item xs={12} md={4}>
+            <Add title="Add a New Task" />   
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Deleted title="Delete Task" />   
+          <Grid item xs={12} md={4}>
+            <Deleted title="Permanent Delete Task" />   
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <History title="Undo Completed Task"/>
           </Grid>
         </Grid> 
-        <Grid container spacing={16}>
-          <Grid item xs={12} md={12}>
-            <History title="History Task"/>
-          </Grid>
-        </Grid>
       </div>
     );
   }
