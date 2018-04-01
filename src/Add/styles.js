@@ -32,12 +32,7 @@ export default {
   overflowTask: {
     overflowY: 'scroll',
     height: 100
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
+  },  
   iconDeleted: {
     cursor: 'pointer',
     '&:hover': {

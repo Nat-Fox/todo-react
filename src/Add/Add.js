@@ -10,8 +10,7 @@ import TextField from 'material-ui/TextField';
 import Grid from 'material-ui/Grid'
 
 function SimpleCard(props) {
-  const { classes, title } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const { classes, title, addfunction, deletefunction, completedfunction, inputValue, changeText, pendingTask } = props;
 
   return (
     <div>
@@ -23,32 +22,53 @@ function SimpleCard(props) {
           <Typography variant="headline" component="h2">
             List of tasks 
           </Typography>          
-          <Typography component="p">
-            <form>
-              <TextField placeholder="Add your task" className={classes.mrgTopForm}></TextField>
-            </form>            
-            <div className={classes.overflowTask}>
-              {/* Aca irá la lista de tareas ingresadas */}
-              <div>
-                <Grid container spacing={16}>
-                  <Grid item xs={8} md={8}>
-                    <span className={classes.bullet}>•</span> 
-                    <span>lala</span>
-                  </Grid>
-                  <Grid item xs={2} md={2}>
-                    <Icon className={classes.iconDeleted}>delete</Icon>
-                  </Grid>                
-                  <Grid item xs={2} md={2}>
-                    <Icon className={classes.iconCheck}>check_circle</Icon>
-                  </Grid>                
-                </Grid>
-              </div>              
-            </div>            
+          <form>
+            <TextField 
+              placeholder="Add your task" 
+              className={classes.mrgTopForm}
+              value={inputValue}
+              onChange={changeText}
+              ></TextField>
+          </form>       
           
-          </Typography>
+          <div className={classes.overflowTask}>
+            {/* Aca irá la lista de tareas ingresadas */}              
+            {pendingTask.map((task, idx) => {
+              return ( 
+                <Grid container spacing={16}>
+                <Grid item xs={8} md={8}>                                                          
+                  <Typography variant="body2">
+                  • {task}
+                  </Typography>   
+                </Grid>
+                <Grid item xs={2} md={2}>
+                <Icon 
+                  className={classes.iconDeleted} 
+                  onClick={deletefunction }>
+                  delete
+                </Icon>
+              </Grid>                
+              <Grid item xs={2} md={2}>
+                <Icon 
+                  className={classes.iconCheck}
+                  onClick={completedfunction}>
+                  check_circle
+                </Icon>
+              </Grid>  
+              </Grid>
+              )
+            })}                          
+          </div>            
+          
+          
         </CardContent>
         <CardActions>
-          <Button variant="raised" size="large" color="primary" className={classes.buttonAdd}>            
+          <Button 
+            variant="raised" 
+            size="large" 
+            color="primary" 
+            className={classes.buttonAdd} 
+            onClick={addfunction}>            
             Add            
             <Icon className={classes.iconAdd}>add_circle_outline</Icon>
           </Button>

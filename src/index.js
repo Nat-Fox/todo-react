@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 // import themes
-import { MuiThemeProvider, CssBaseline} from 'material-ui'
+import { MuiThemeProvider } from 'material-ui'
 import Theme from './theme'
 
 // envolver app en el mui theme 

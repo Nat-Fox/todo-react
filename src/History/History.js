@@ -9,8 +9,7 @@ import Icon from 'material-ui/Icon';
 import Grid from 'material-ui/Grid'
 
 function SimpleCard(props) {
-  const { classes, title } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const { classes, title } = props;  
 
   return (
     <div>
@@ -22,21 +21,21 @@ function SimpleCard(props) {
           <Typography variant="headline" component="h2">
             Completed Tasks
           </Typography>   
-
-          <Typography component="p">    
+          
             <div className={classes.overflowTaskHistory}>
               {/* Aca irá la lista de tareas completadas */}
               <Grid container spacing={16}>
-                  <Grid item xs={10} md={10}>
-                    <span className={classes.bullet}>•</span> 
-                    <span>lala</span>
+                  <Grid item xs={10} md={10}>                                        
+                      <Typography variant="body2">
+                        • lala
+                      </Typography>                    
                   </Grid>                  
                   <Grid item xs={2} md={2}>
                     <Icon className={classes.iconUndoTask}>undo</Icon>
                   </Grid>                
                 </Grid>             
             </div>              
-          </Typography>     
+           
 
         </CardContent>
         <CardActions>

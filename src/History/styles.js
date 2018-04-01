@@ -27,7 +27,7 @@ export default {
   overflowTaskHistory: {
     overflowY: 'scroll',
     height: 120,
-    marginTop: '15%'
+    marginTop: '20%'
   },
   iconUndoTask: {
     cursor: 'pointer',

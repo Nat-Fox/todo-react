@@ -28,12 +28,7 @@ export default {
   overflowTaskDeleted: {
     overflowY: 'scroll',
     height: 100,
-    marginTop: '15%'
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+    marginTop: '20%'
   },
   iconDeletedForever: {
     cursor: 'pointer',
