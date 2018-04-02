@@ -39,11 +39,6 @@ class App extends Component {
   
   // necesitamos el id y la tarea a eliminar
   deleteTask =  idx => () => {
-    
-    // let deleted = this.state.pendingTask.splice(idx, 1);
-    // console.log('Elemento a borrar', deleted)
-    // console.log('despues de eliminado', this.state.pendingTask)
-
     this.setState((prevState) => {
 
       // 1ª pedingTask -> ["abc1", "abc2", "abc3"]
@@ -62,8 +57,6 @@ class App extends Component {
         // 1ª deletedTask -> ["abc3"] + el que se borro -> ["abc2"]  resultado => ["abc3", "abc2"]
         deletedTask: prevState.deletedTask.concat(addToDeleted)
       };
-      
-      //return { deletedTask: }
       
     })
     
@@ -90,7 +83,9 @@ class App extends Component {
             />   
           </Grid>
           <Grid item xs={12} md={4}>
-            <Deleted title="Permanent Delete Task" />   
+            <Deleted 
+            title="Permanent Delete Task" 
+            deletedTask={this.state.deletedTask}/>   
           </Grid>
           <Grid item xs={12} md={4}>
             <History title="Undo Completed Task"/>

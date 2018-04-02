@@ -4,7 +4,7 @@ import blue from 'material-ui/colors/blue';
 export default {
   card: {
     minWidth: 275,
-    height: 350
+    height: 500
   },
   bullet: {
     display: 'inline-block',
@@ -23,12 +23,12 @@ export default {
   },
   buttonRemove: {
     position: 'absolute',
-    top: '48%'
+    top: '75%'
   },
   overflowTaskDeleted: {
     overflowY: 'scroll',
-    height: 100,
-    marginTop: '20%'
+    height: 250,
+    marginTop: '16%'
   },
   iconDeletedForever: {
     cursor: 'pointer',

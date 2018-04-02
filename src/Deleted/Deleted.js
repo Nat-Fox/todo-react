@@ -10,7 +10,7 @@ import Grid from 'material-ui/Grid'
 
 
 function SimpleCard(props) {
-  const { classes, title } = props;  
+  const { classes, title, deletedTask } = props;  
 
   return (
     <div>
@@ -26,21 +26,23 @@ function SimpleCard(props) {
 
           <div className={classes.overflowTaskDeleted}>
             {/* Aca irá la lista de tareas borradas */}
-            <div>
-              <Grid container spacing={16}>
-                <Grid item xs={8} md={8}>                       
-                    <Typography variant="body2">
-                      • lala
-                    </Typography>                                                      
+              {deletedTask.map((taskDelete, idx) => {
+                return(
+                  <Grid container spacing={16} key={idx}>
+                    <Grid item xs={8} md={8}>                       
+                        <Typography variant="body2">
+                          • {taskDelete}
+                        </Typography>                                                      
+                    </Grid>
+                    <Grid item xs={2} md={2}>
+                      <Icon className={classes.iconDeletedForever}>delete_forever</Icon>
+                    </Grid>                
+                    <Grid item xs={2} md={2}>
+                      <Icon className={classes.iconUndo}>undo</Icon>
+                    </Grid>                
                 </Grid>
-                <Grid item xs={2} md={2}>
-                  <Icon className={classes.iconDeletedForever}>delete_forever</Icon>
-                </Grid>                
-                <Grid item xs={2} md={2}>
-                  <Icon className={classes.iconUndo}>undo</Icon>
-                </Grid>                
-              </Grid>
-            </div>              
+                )  
+              })}           
           </div>            
 
         </CardContent>        

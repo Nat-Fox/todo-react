@@ -4,7 +4,7 @@ import green from 'material-ui/colors/green';
 export default {
   card: {
     minWidth: 275,
-    height: 350
+    height: 500
   },
   bullet: {
     display: 'inline-block',
@@ -23,7 +23,7 @@ export default {
   },
   buttonAdd: {
     position: 'absolute',
-    top: '48%'
+    top: '75%'
   },
   mrgTopForm: {
     marginTop: 15,
@@ -31,7 +31,7 @@ export default {
   },
   overflowTask: {
     overflowY: 'scroll',
-    height: 100
+    height: 250
   },  
   iconDeleted: {
     cursor: 'pointer',
