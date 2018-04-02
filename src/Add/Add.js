@@ -11,7 +11,7 @@ import Grid from 'material-ui/Grid'
 
 function SimpleCard(props) {
   const { classes, title, addfunction, deletefunction, completedfunction, inputValue, changeText, pendingTask } = props;
-
+  
   return (
     <div>
       <Card className={classes.card}>
@@ -35,26 +35,27 @@ function SimpleCard(props) {
             {/* Aca irá la lista de tareas ingresadas */}              
             {pendingTask.map((task, idx) => {
               return ( 
-                <Grid container spacing={16}>
-                <Grid item xs={8} md={8}>                                                          
-                  <Typography variant="body2">
-                  • {task}
-                  </Typography>   
-                </Grid>
+                <Grid container spacing={16} key={idx}>
+                  <Grid item xs={8} md={8}>                                                          
+                    <Typography variant="body2">
+                    • {task}                    
+                    </Typography>   
+                    {console.log(idx)}
+                  </Grid>
+                  <Grid item xs={2} md={2}>
+                  <Icon 
+                    className={classes.iconDeleted} 
+                    onClick={deletefunction(idx)}>
+                    delete
+                  </Icon>
+                </Grid>                
                 <Grid item xs={2} md={2}>
-                <Icon 
-                  className={classes.iconDeleted} 
-                  onClick={deletefunction }>
-                  delete
-                </Icon>
-              </Grid>                
-              <Grid item xs={2} md={2}>
-                <Icon 
-                  className={classes.iconCheck}
-                  onClick={completedfunction}>
-                  check_circle
-                </Icon>
-              </Grid>  
+                  <Icon 
+                    className={classes.iconCheck}
+                    onClick={completedfunction}>
+                    check_circle
+                  </Icon>
+                </Grid>  
               </Grid>
               )
             })}                          

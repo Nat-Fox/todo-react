@@ -14,13 +14,14 @@ class App extends Component {
     super(props);
     this.state = {
       text: '',
-      pendingTask: []
+      pendingTask: [],
+      deletedTask: []
     }
   }
 
   // function add component
   addTask = () => {
-    console.log('add', this.state.text);
+    //console.log('add', this.state.text);
     this.setState((prevState) => {
       return { 
         pendingTask: prevState.pendingTask.concat([prevState.text]),
@@ -30,14 +31,42 @@ class App extends Component {
   }
 
   changeText = (event) => {
-    console.log(event.target);
+    //console.log(event.target);
     this.setState({
       text: event.target.value
     })
   }
   
-  deleteTask = () => {
-    console.log('delete task');
+  // necesitamos el id y la tarea a eliminar
+  deleteTask =  idx => () => {
+    
+    // let deleted = this.state.pendingTask.splice(idx, 1);
+    // console.log('Elemento a borrar', deleted)
+    // console.log('despues de eliminado', this.state.pendingTask)
+
+    this.setState((prevState) => {
+
+      // 1ª pedingTask -> ["abc1", "abc2", "abc3"]
+      // 2ª pedingTask -> ["abc1", "abc2"]
+
+      // 1ª el que se borro filtrado -> ["abc3"]
+      // 2ª el que se borro filtrado -> ["abc2"]
+      const addToDeleted = prevState.pendingTask.filter((elem, index) => index == idx);
+
+      return {
+        // 1ª los que quedaron -> ["abc1", "abc2"]
+        // 1ª los que quedaron -> ["abc1"]
+        pendingTask: prevState.pendingTask.filter((elem, index) => index !== idx),
+
+        // 1ª deletedTask -> [] + el que se borro -> ["abc3"]  resultado => ["abc3"]
+        // 1ª deletedTask -> ["abc3"] + el que se borro -> ["abc2"]  resultado => ["abc3", "abc2"]
+        deletedTask: prevState.deletedTask.concat(addToDeleted)
+      };
+      
+      //return { deletedTask: }
+      
+    })
+    
   }
   
   completedTask = () => {
