@@ -52,7 +52,7 @@ function SimpleCard(props) {
                 <Grid item xs={2} md={2}>
                   <Icon 
                     className={classes.iconCheck}
-                    onClick={completedfunction}>
+                    onClick={completedfunction(idx)}>
                     check_circle
                   </Icon>
                 </Grid>  

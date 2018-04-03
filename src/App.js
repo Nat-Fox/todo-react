@@ -15,7 +15,8 @@ class App extends Component {
     this.state = {
       text: '',
       pendingTask: [],
-      deletedTask: []
+      deletedTask: [],
+      completedTask: []
     }
   }
 
@@ -36,25 +37,16 @@ class App extends Component {
       text: event.target.value
     })
   }
-  
-  // necesitamos el id y la tarea a eliminar
+    
   deleteTask =  idx => () => {
     this.setState((prevState) => {
-
-      // 1ª pedingTask -> ["abc1", "abc2", "abc3"]
-      // 2ª pedingTask -> ["abc1", "abc2"]
-
-      // 1ª el que se borro filtrado -> ["abc3"]
-      // 2ª el que se borro filtrado -> ["abc2"]
+      // item seleccionado a eliminar
       const addToDeleted = prevState.pendingTask.filter((elem, index) => index == idx);
 
       return {
-        // 1ª los que quedaron -> ["abc1", "abc2"]
-        // 1ª los que quedaron -> ["abc1"]
+        // items que no se eliminan
         pendingTask: prevState.pendingTask.filter((elem, index) => index !== idx),
-
-        // 1ª deletedTask -> [] + el que se borro -> ["abc3"]  resultado => ["abc3"]
-        // 1ª deletedTask -> ["abc3"] + el que se borro -> ["abc2"]  resultado => ["abc3", "abc2"]
+        // se concatenan las task que van siendo eliminadas en el array de items eliminados        
         deletedTask: prevState.deletedTask.concat(addToDeleted)
       };
       
@@ -62,8 +54,19 @@ class App extends Component {
     
   }
   
-  completedTask = () => {
-    console.log('completed task');
+  completedTask = idx => () => {
+    console.log('completed task', idx);
+    this.setState((prevState) => {
+      // item seleccionado
+      const addToCompleted = prevState.pendingTask.filter((elem, index) => index == idx);
+      return {
+        // items que no se eliminan
+        pendingTask: prevState.pendingTask.filter((elem, index) => index !== idx),
+        // se concatenan las task que van siendo seleccionadas en el array de task completed
+        completedTask: prevState.completedTask.concat(addToCompleted)
+      }
+    })
+    
   }
 
   render() {
@@ -79,16 +82,19 @@ class App extends Component {
               completedfunction={this.completedTask}
               inputValue={this.state.text}  
               changeText={this.changeText}  
-              pendingTask={this.state.pendingTask}          
+              pendingTask={this.state.pendingTask}   
             />   
           </Grid>
           <Grid item xs={12} md={4}>
             <Deleted 
-            title="Permanent Delete Task" 
-            deletedTask={this.state.deletedTask}/>   
+              title="Permanent Delete Task" 
+              deletedTask={this.state.deletedTask}/>   
           </Grid>
           <Grid item xs={12} md={4}>
-            <History title="Undo Completed Task"/>
+            <History 
+              title="Undo Completed Task"
+              completedTask={this.state.completedTask}    
+            />
           </Grid>
         </Grid> 
       </div>

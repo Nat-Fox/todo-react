@@ -3,7 +3,7 @@ import blue from 'material-ui/colors/blue';
 export default {
   card: {
     minWidth: 275,
-    height: 500
+    height: 580
   },
   bullet: {
     display: 'inline-block',

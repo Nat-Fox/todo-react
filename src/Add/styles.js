@@ -4,7 +4,7 @@ import green from 'material-ui/colors/green';
 export default {
   card: {
     minWidth: 275,
-    height: 500
+    height: 580
   },
   bullet: {
     display: 'inline-block',

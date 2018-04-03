@@ -9,7 +9,7 @@ import Icon from 'material-ui/Icon';
 import Grid from 'material-ui/Grid'
 
 function SimpleCard(props) {
-  const { classes, title } = props;  
+  const { classes, title, completedTask } = props;  
 
   return (
     <div>
@@ -22,19 +22,24 @@ function SimpleCard(props) {
             Completed Tasks
           </Typography>   
           
-            <div className={classes.overflowTaskHistory}>
-              {/* Aca irá la lista de tareas completadas */}
-              <Grid container spacing={16}>
+
+          <div className={classes.overflowTaskHistory}>
+            {/* Aca irá la lista de tareas completadas */}
+            {completedTask.map((task, idx) => {
+              return(
+                <Grid container spacing={16} key={idx}>
                   <Grid item xs={10} md={10}>                                        
                       <Typography variant="body2">
-                        • lala
+                        • {task}
                       </Typography>                    
                   </Grid>                  
                   <Grid item xs={2} md={2}>
                     <Icon className={classes.iconUndoTask}>undo</Icon>
                   </Grid>                
-                </Grid>             
-            </div>              
+                </Grid>
+              )                
+            })}                           
+          </div>              
            
 
         </CardContent>
