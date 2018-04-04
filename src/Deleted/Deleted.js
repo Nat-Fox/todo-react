@@ -10,7 +10,7 @@ import Grid from 'material-ui/Grid'
 
 
 function SimpleCard(props) {
-  const { classes, title, deletedTask, deleteTotalTask } = props;  
+  const { classes, title, deletedTask, deleteTotalTask, undoFunctionDelete } = props;  
 
   return (
     <div>
@@ -42,7 +42,11 @@ function SimpleCard(props) {
                       </Icon>
                     </Grid>                
                     <Grid item xs={2} md={2}>
-                      <Icon className={classes.iconUndo}>undo</Icon>
+                      <Icon 
+                        className={classes.iconUndo}
+                        onClick={undoFunctionDelete(idx)}>
+                          undo
+                      </Icon>
                     </Grid>                
                 </Grid>
                 )  

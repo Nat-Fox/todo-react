@@ -20,10 +20,8 @@ class App extends Component {
       deleteTotalTask: []
     }
   }
-
-  // function add component
-  addTask = () => {
-    //console.log('add', this.state.text);
+  
+  addTask = () => {    
     this.setState((prevState) => {
       return { 
         pendingTask: prevState.pendingTask.concat([prevState.text]),
@@ -68,16 +66,27 @@ class App extends Component {
 
   completedTask = idx => () => {    
     this.setState((prevState) => {
-      // item seleccionado
+      // item seleccionado      
       const addToCompleted = prevState.pendingTask.filter((elem, index) => index === idx);
+   
       return {
         // items que no se eliminan
         pendingTask: prevState.pendingTask.filter((elem, index) => index !== idx),
         // se concatenan las task que van siendo seleccionadas en el array de task completed
         completedTask: prevState.completedTask.concat(addToCompleted)
       }
+    })    
+  }
+
+  undoTaskDeleted = idx => () => {    
+    this.setState((prevState) => {                  
+      const undoDeleted = prevState.deletedTask.filter((elem, index) => index === idx);    
+      console.log('undo', undoDeleted);
+      return {
+        pendingTask: prevState.pendingTask.concat(undoDeleted),
+        undoDeleted: ''        
+      }
     })
-    
   }
 
   render() {
@@ -100,7 +109,8 @@ class App extends Component {
             <Deleted 
               title="Permanent Delete Task" 
               deletedTask={this.state.deletedTask}
-              deleteTotalTask={this.deleteTotalTask}/>   
+              deleteTotalTask={this.deleteTotalTask}
+              undoFunctionDelete={this.undoTaskDeleted}/>   
           </Grid>
           <Grid item xs={12} md={4}>
             <History 
