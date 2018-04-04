@@ -39,8 +39,7 @@ function SimpleCard(props) {
                   <Grid item xs={8} md={8}>                                                          
                     <Typography variant="body2">
                     • {task}                    
-                    </Typography>   
-                    {console.log(idx)}
+                    </Typography>                       
                   </Grid>
                   <Grid item xs={2} md={2}>
                   <Icon 

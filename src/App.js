@@ -16,7 +16,8 @@ class App extends Component {
       text: '',
       pendingTask: [],
       deletedTask: [],
-      completedTask: []
+      completedTask: [],
+      deleteTotalTask: []
     }
   }
 
@@ -41,7 +42,7 @@ class App extends Component {
   deleteTask =  idx => () => {
     this.setState((prevState) => {
       // item seleccionado a eliminar
-      const addToDeleted = prevState.pendingTask.filter((elem, index) => index == idx);
+      const addToDeleted = prevState.pendingTask.filter((elem, index) => index === idx);
 
       return {
         // items que no se eliminan
@@ -54,11 +55,21 @@ class App extends Component {
     
   }
   
-  completedTask = idx => () => {
-    console.log('completed task', idx);
+  deleteTotalTask = idx => () => {
+    this.setState((prevState) => {
+      const addToTotalDeleted = prevState.deletedTask.filter((elem, index) => index === idx);
+    
+      return {
+        deletedTask: prevState.deletedTask.filter((elem, index) => index !== idx),
+        deleteTotalTask: prevState.deleteTotalTask.concat(addToTotalDeleted)
+      }
+    })    
+  }
+
+  completedTask = idx => () => {    
     this.setState((prevState) => {
       // item seleccionado
-      const addToCompleted = prevState.pendingTask.filter((elem, index) => index == idx);
+      const addToCompleted = prevState.pendingTask.filter((elem, index) => index === idx);
       return {
         // items que no se eliminan
         pendingTask: prevState.pendingTask.filter((elem, index) => index !== idx),
@@ -88,7 +99,8 @@ class App extends Component {
           <Grid item xs={12} md={4}>
             <Deleted 
               title="Permanent Delete Task" 
-              deletedTask={this.state.deletedTask}/>   
+              deletedTask={this.state.deletedTask}
+              deleteTotalTask={this.deleteTotalTask}/>   
           </Grid>
           <Grid item xs={12} md={4}>
             <History 
