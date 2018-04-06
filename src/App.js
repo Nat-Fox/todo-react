@@ -80,11 +80,22 @@ class App extends Component {
 
   undoTaskDeleted = idx => () => {    
     this.setState((prevState) => {                  
-      const undoDeleted = prevState.deletedTask.filter((elem, index) => index === idx);    
+      const undoDeleted = prevState.deletedTask.filter((elem, index) => index === idx);          
       console.log('undo', undoDeleted);
       return {
         pendingTask: prevState.pendingTask.concat(undoDeleted),
-        undoDeleted: ''        
+        deletedTask: prevState.deletedTask.filter((elem, index) => index !== idx)
+      }
+    })
+  }
+
+  undoAllDeleted = () => {
+    //deleteTask
+    this.setState((prevState) => {
+      console.log('lala', prevState.deletedTask)
+      return {
+        pendingTask: prevState.pendingTask.concat(prevState.deletedTask),
+        deletedTask: []
       }
     })
   }
@@ -110,7 +121,8 @@ class App extends Component {
               title="Permanent Delete Task" 
               deletedTask={this.state.deletedTask}
               deleteTotalTask={this.deleteTotalTask}
-              undoFunctionDelete={this.undoTaskDeleted}/>   
+              undoFunctionDelete={this.undoTaskDeleted}
+              undoAllDeleted={this.undoAllDeleted}/>   
           </Grid>
           <Grid item xs={12} md={4}>
             <History 
