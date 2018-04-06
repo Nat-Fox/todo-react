@@ -115,7 +115,7 @@ class App extends Component {
     this.setState((prevState) => {
       return {
         pendingTask: prevState.pendingTask.concat(prevState.completedTask),
-        pendingTask: []
+        completedTask: []
       }
     })
   }
