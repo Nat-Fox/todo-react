@@ -92,10 +92,30 @@ class App extends Component {
   undoAllDeleted = () => {
     //deleteTask
     this.setState((prevState) => {
-      console.log('lala', prevState.deletedTask)
+      //console.log('lala', prevState.deletedTask)
       return {
         pendingTask: prevState.pendingTask.concat(prevState.deletedTask),
         deletedTask: []
+      }
+    })
+  }
+
+  undoTaskCompleted = idx => () => {
+    this.setState((prevState) => {
+      const undoCompleted = prevState.completedTask.filter((elem, index) => index === idx)
+      return {
+        pendingTask: prevState.pendingTask.concat(undoCompleted),
+        completedTask: prevState.completedTask.filter((elem, index) => index !== idx)
+      }      
+    })    
+  }
+
+  undoAllTaskCompleted = () => {
+    console.log('lala')
+    this.setState((prevState) => {
+      return {
+        pendingTask: prevState.pendingTask.concat(prevState.completedTask),
+        pendingTask: []
       }
     })
   }
@@ -127,7 +147,9 @@ class App extends Component {
           <Grid item xs={12} md={4}>
             <History 
               title="Undo Completed Task"
-              completedTask={this.state.completedTask}    
+              completedTask={this.state.completedTask}
+              undoTaskCompleted={this.undoTaskCompleted}  
+              undoAllTaskCompleted={this.undoAllTaskCompleted}  
             />
           </Grid>
         </Grid> 

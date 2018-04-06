@@ -9,7 +9,7 @@ import Icon from 'material-ui/Icon';
 import Grid from 'material-ui/Grid'
 
 function SimpleCard(props) {
-  const { classes, title, completedTask } = props;  
+  const { classes, title, completedTask, undoTaskCompleted, undoAllTaskCompleted } = props;  
 
   return (
     <div>
@@ -34,7 +34,11 @@ function SimpleCard(props) {
                       </Typography>                    
                   </Grid>                  
                   <Grid item xs={2} md={2}>
-                    <Icon className={classes.iconUndoTask}>undo</Icon>
+                    <Icon 
+                      className={classes.iconUndoTask}
+                      onClick={undoTaskCompleted(idx)}>
+                        undo
+                    </Icon>
                   </Grid>                
                 </Grid>
               )                
@@ -44,7 +48,12 @@ function SimpleCard(props) {
 
         </CardContent>
         <CardActions>
-          <Button variant="raised" size="large" color="primary" className={classes.buttonUndo}>
+          <Button 
+            variant="raised" 
+            size="large" 
+            color="primary" 
+            className={classes.buttonUndo}
+            onClick={undoAllTaskCompleted}>
             Undo All
             <Icon className={classes.iconUndo}>undo</Icon>
           </Button>
