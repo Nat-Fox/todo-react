@@ -13,12 +13,20 @@ class App extends Component {
 
   
 
-  constructor(props) {
-    console.log('data ->', Data)
+  constructor(props) {      
+
+    let pending = Data.filter(elem => {
+      return elem.status === 'pendingTask'
+    }).map(e => {
+      return e.description      
+    })
+    
+    
+
     super(props);
     this.state = {
       text: '',
-      pendingTask: [],
+      pendingTask: pending,
       deletedTask: [],
       completedTask: [],
       deleteTotalTask: []
@@ -114,8 +122,7 @@ class App extends Component {
     })    
   }
 
-  undoAllTaskCompleted = () => {
-    console.log('lala')
+  undoAllTaskCompleted = () => {    
     this.setState((prevState) => {
       return {
         pendingTask: prevState.pendingTask.concat(prevState.completedTask),

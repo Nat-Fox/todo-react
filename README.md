@@ -12,4 +12,7 @@
     
 * MaterialUI
 
+* Data
+    * JSON inicial
+
 ![Alt Text](https://github.com/Nat-Fox/todo-react/blob/master/giftodo.gif?raw=true)
