@@ -15,21 +15,30 @@ class App extends Component {
 
   constructor(props) {      
 
+    // Filtro por el estado de la task y retorno la descripción para empezar los arreglos con ellas
     let pending = Data.filter(elem => {
       return elem.status === 'pendingTask'
-    }).map(e => {
-      return e.description      
-    })
+    }).map(e => e.description);
     
-    
+    let completed = Data.filter(elem => {
+      return elem.status === 'completedTask'
+    }).map(e => e.description);
 
+    let deletedTask = Data.filter(elem => {
+      return elem.status === 'deletedTask'
+    }).map(e => e.description);
+
+    let deleteTotalTask = Data.filter(elem => {
+      return elem.status === 'deleteTotalTask'
+    }).map(e => e.description)
+    
     super(props);
     this.state = {
       text: '',
       pendingTask: pending,
-      deletedTask: [],
-      completedTask: [],
-      deleteTotalTask: []
+      deletedTask: deletedTask,
+      completedTask: completed,
+      deleteTotalTask: deleteTotalTask
     }
   }
   
