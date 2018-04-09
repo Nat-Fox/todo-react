@@ -6,11 +6,15 @@ import Deleted from './Deleted/Deleted';
 import History from './History/History'
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import Data from './data';
 
 
 class App extends Component {
 
+  
+
   constructor(props) {
+    console.log('data ->', Data)
     super(props);
     this.state = {
       text: '',
